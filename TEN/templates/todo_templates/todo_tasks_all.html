@@ -2,4 +2,71 @@
 
 {% block content %}
 <h1>ToDo App</h1>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            
+<form action="create_task/" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Task's name</label>
+      <input required type="text" class="form-control" id="exampleFormControlInput1" placeholder="Housework" name="name">
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Annotation</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Clean the room, wash dishes etc." name="content"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">Task status</label>
+        <select class="form-control" id="exampleFormControlSelect1" name="status">
+            <option>Active</option>
+            <option>In Process</option>
+            <option>Done</option>
+            <option>Not active</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary" style="margin-top:20px">Submit</button>
+  </form>
+        </div>
+        <div class="col">
+            <center><h1>TASKS</h1></center>
+            {% if tasks %}
+            <div class="accordion" id="accordionExample">
+                {% for task in tasks %}
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="heading{{task.id}}">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{task.id}}" aria-expanded="false" aria-controls="collapse{{task.id}}">
+                          {{task.name}}
+                        </button>
+                      </h2>
+                      <div id="collapse{{task.id}}" class="accordion-collapse collapse" aria-labelledby="heading{{task.id}}" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          {{task.content}}
+                          <br>
+                          {% if task.status == 'Active' %}
+                          <span class="badge text-bg-primary">Active</span>
+                          {% elif task.status == 'Done' %}
+                          <span class="badge rounded-pill text-bg-success">Done</span>
+                          {% elif task.status == 'Not active' %}
+                          <span class="badge rounded-pill text-bg-secondary">Not active</span>
+                          {% elif task.status == 'In Process' %}
+                          <span class="badge rounded-pill text-bg-warning">In Process</span>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <h1>No Tasks</h1>
+            {% endif %}                 
+        </div>
+    </div>
+</div>
 {% endblock content %}
+
+
+
+
+
+

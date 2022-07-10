@@ -9,9 +9,9 @@
   </head>
   <body>
     <!-- Start Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark container" style="border-radius: 0px 0px 20px 20px; margin-bottom: 50px;">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">TEN</a>
+          <a class="navbar-brand" href="/">TEN</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -21,7 +21,7 @@
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="https://github.com/Vlad0n1m/TEN-projects-on-one-website/tree/master">GitHub</a>
+                <a class="nav-link" href="https://github.com/Vlad0n1m/TEN-projects-on-one-website">GitHub</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -62,8 +62,10 @@
     <!-- End Navbar -->
 
     <!-- Start Content -->
+    <div class="container">
     {% block content %}
     {% endblock content %}
+  </div>
     <!-- End Content -->
     
     <!-- Start Footer -->
